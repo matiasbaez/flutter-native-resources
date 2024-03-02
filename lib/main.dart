@@ -35,6 +35,10 @@ class MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     ref.read(appStateProvider.notifier).state = state;
+    // Check permissions on resume if the check doesn't changes
+    if ( state == AppLifecycleState.resumed ) {
+      ref.read(permissionsProvider.notifier).checkPermissions();
+    }
     super.didChangeAppLifecycleState(state);
   }
 

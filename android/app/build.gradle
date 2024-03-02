@@ -22,9 +22,14 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def compileSdkVersion = localProperties.getProperty('flutter.compileSdkVersion')
+if (compileSdkVersion == null) {
+    compileSdkVersion = 33
+}
+
 android {
     namespace "com.example.miscelaneos"
-    compileSdk flutter.compileSdkVersion
+    compileSdk compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {

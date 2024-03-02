@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:miscelaneos/presentation/providers/app_state_provider.dart';
 
 class PermissionScreen extends StatelessWidget {
 
@@ -17,11 +19,14 @@ class PermissionScreen extends StatelessWidget {
   }
 }
 
-class _PermissionView extends StatelessWidget {
+class _PermissionView extends ConsumerWidget {
   const _PermissionView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final appState = ref.watch(appStateProvider);
+
     return ListView(
       children: [
 
